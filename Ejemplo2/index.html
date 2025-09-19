@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos en HTML y JS</title>     
+    <script>
+        function cambiandoColor()
+        {
+            document.body.style.backgroundColor = "lightblue";
+        }
+        function gestorEventos()        
+        {
+          //Gestionando click del boton
+          let boton = document.getElementById("boton");
+          boton.addEventListener("click", cambiandoColor);
+
+          //gestion del formulario
+          let input = document.getElementById("user");
+          input.onfocus = function(event)
+          {
+             let micampo = event.target;
+             if (micampo.value == "tu@email")
+             {
+                micampo.value = " ";
+             }
+          }
+         input.onblur = function(event)
+         {
+            micampo = event.target;
+            if (micampo.value == " ")
+             {
+                micampo.value = "tu@email";
+             }
+         }
+         let formulario = document.getElementById("formulario");
+         formulario.onsubmit = function()
+          {
+            alert ("Has enviado la información del formulario");
+          }
+           
+        }
+        window.onload = gestorEventos;
+    </script>   
+           
+</head>
+<body>
+    <h1>Eventos en HTML y JavaScript</h1>
+    <h2>Cambiando el color & Rellenando formulario</h2>
+    <button id="boton">Pulsa aquí</button> 
+    <!--<button onclick= "alert('Has pulsado en boton')">Pulsa aqui</button> -->
+    <br />
+    <br />
+    <form id = "formulario">
+        Username: <input type="text" name="username" size="15" id="user" value="tu@email"/> <br />
+        <br />
+        Password: <input type="password" name="pass" size="15" id="pass" /> <br />
+        <br />
+        <input type="submit" value="Login" />
+    </form>
+</body>
+</html>
